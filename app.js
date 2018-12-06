@@ -61,7 +61,7 @@ function renderLeaderboard(results) {
     t.newRow();
   });
   const message =
-    "```css\n[Advent of Code leaderboard]\n" + t.toString + "\n```";
+    "```css\n[Advent of Code leaderboard]\n" + t.toString() + "\n```";
   return message;
 }
 
