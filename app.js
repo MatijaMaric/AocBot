@@ -60,13 +60,9 @@ function renderLeaderboard(results) {
     t.cell("Days", stars);
     t.newRow();
   });
-
-  const embed = new RichEmbed()
-    .setTitle("Advent of Code leaderboarddddddddddddddddddddddddddddddd")
-    .setColor(0x3399ff)
-    .setDescription("```\n" + t.toString() + "\n```")
-    .setFooter("lol dude what");
-  return embed;
+  const message =
+    "```css\n[Advent of Code leaderboard]\n" + t.toString + "\n```";
+  return message;
 }
 
 client.on("ready", () => {
