@@ -5,6 +5,7 @@ const fetch = require("node-fetch");
 const _ = require("lodash");
 const Table = require("easy-table");
 const emoji = require("node-emoji");
+const moment = require("moment-timezone");
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const SESSION_COOKIE = process.env.SESSION_COOKIE;
@@ -32,12 +33,8 @@ function renderLeaderboard(results) {
   const members = _.reverse(
     _.sortBy(results.members, member => member.local_score)
   );
-  var maxDays = 0;
+  var maxDays = moment.tz("EST").date();
   const data = _.map(members, member => {
-    const days = _.max(
-      _.map(_.keys(member.completion_day_level), day => Number(day))
-    );
-    if (days > maxDays) maxDays = days;
     return {
       name: member.name,
       score: member.local_score,
